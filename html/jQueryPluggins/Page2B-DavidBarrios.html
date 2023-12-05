@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Plugin - test </title>
+    <!-- Importing jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Importing files for datatable plugin -->
+    <link rel="stylesheet" type="text/css" href="./2B-Plugin/css/datatable.css" media="screen">
+    <script type="text/javascript" src="./2B-Plugin/js/datatable.min.js"></script>
+    <script type="text/javascript" src="./2B-Plugin/js/datatable.jquery.min.js"></script>
+    <!-- Importing files for panelslider plugin -->
+    <script type="text/javascript" src="./2B-Plugin/js/jquery.panelslider.min.js"></script>
+
+    <script>
+        $(document).ready(() => {
+            /* Implements datatable to the table */
+            var datatable = new DataTable(document.querySelector('#first-datatable-output'), {
+                pageSize: 5,
+                sort: [true, true, false],
+                filters: [true, false, 'select'],
+                filterText: 'Type to filter... ',
+                pagingDivSelector: "#paging-first-datatable"
+            });
+
+            /* Implements the panel slider */
+            $('#my-link').panelslider();
+
+        });
+    </script>
+
+    <style>
+        /* general style */
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            margin: 0;
+        }
+
+        /* Styles for table plugin */
+        #container{
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+        table, td {
+            border-collapse: collapse;
+            border: solid black 1px;
+        }
+        td, th {
+            padding-top: 1%;
+            padding-bottom: 1%;
+            text-align: center;
+        }
+        table{
+            width: 100%;
+        }
+        ul {
+            width: 88%;
+            display: flex;
+            justify-content: space-between;
+        }
+        /* Panel slider styles */
+        /* Panel opening and closing animation lasts 200ms */
+        body {
+            transition: transform .2s;
+        }
+
+        /* Slide page 200px to the right when panel is opened */
+        body.ps-active {
+            transform: translateX(200px);
+        }
+
+        /* Position panel */
+
+        html, body{
+            height: 100vh;
+        }
+        #my-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 100%;  /* remember to set 100% height for all its parents too, including html and body */
+            background-color: #eee;
+            transform: translateX(-200px);
+        }
+        #button-container {
+            margin-right: auto;
+            margin-left: auto;
+            width: 11%;
+        }
+        button {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <table id = "first-datatable-output" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Linus</td>
+                    <td>Torvalds</td>
+                    <td>Computer Science</td>
+                </tr>
+                <tr>
+                    <td>Brian</td>
+                    <td>Kernighan</td>
+                    <td>Computer Science</td>
+                </tr>
+                <tr>
+                    <td>Blaise</td>
+                    <td>Pascal</td>
+                    <td>Mathematics</td>
+                </tr>
+                <tr>
+                    <td>Larry</td>
+                    <td>Page</td>
+                    <td>Computer Science</td>
+                </tr>
+                <tr>
+                    <td>Richard</td>
+                    <td>Hamming</td>
+                    <td>Mathematics</td>
+                </tr>
+                <tr>
+                    <td>Grace</td>
+                    <td>Hopper</td>
+                    <td>Computer Science</td>
+                </tr>
+                <tr>
+                    <td>Pierre</td>
+                    <td>Bezier</td>
+                    <td>Mathematics</td>
+                </tr>
+                <tr>
+                    <td>Shigeru</td>
+                    <td>Miyamoto</td>
+                    <td>Computer Science</td>
+                </tr>
+                <tr>
+                    <td>Leslie</td>
+                    <td>Lamport</td>
+                    <td>Computer Science</td>
+                </tr>
+                <tr>
+                    <td>Rasmus</td>
+                    <td>Lerdorf</td>
+                    <td>Computer Science</td>
+                </tr>
+                <tr>
+                    <td>Xavier</td>
+                    <td>Leroy</td>
+                    <td>Computer Science</td>
+                </tr>
+                <tr>
+                    <td>Albert</td>
+                    <td>Einstein</td>
+                    <td>Physics</td>
+                </tr>
+                <tr>
+                    <td>Bill</td>
+                    <td>Gates</td>
+                    <td>Computer Science</td>
+                </tr>
+                <tr>
+                    <td>Leonard</td>
+                    <td>De Vinci</td>
+                    <td>Mathematics</td>
+                </tr>
+                <tr>
+                    <td>Pierre</td>
+                    <td>De Fermat</td>
+                    <td>Mathematics</td>
+                </tr>
+                <tr>
+                    <td>René</td>
+                    <td>Descartes</td>
+                    <td>Mathematics</td>
+                </tr>
+                <tr>
+                    <td>Alan</td>
+                    <td>Turing</td>
+                    <td>Computer Science</td>
+                </tr>
+                <tr>
+                    <td>Ada</td>
+                    <td>Lovelace</td>
+                    <td>Computer Science</td>
+                </tr>
+                <tr>
+                    <td>Isaac</td>
+                    <td>Newton</td>
+                    <td>Physics</td>
+                </tr>
+                <tr>
+                    <td>Carl Friedrich</td>
+                    <td>Gauss</td>
+                    <td>Mathematics</td>
+                </tr>
+                <tr>
+                    <td>John</td>
+                    <td>Von Neumann</td>
+                    <td>Computer Science</td>
+                </tr>
+                <tr>
+                    <td>Claude</td>
+                    <td>Shannon</td>
+                    <td>Mathematics</td>
+                </tr>
+                <tr>
+                    <td>Tim</td>
+                    <td>Berners-Lee</td>
+                    <td>Computer Science</td>
+                </tr>
+                <tr>
+                    <td>Richard</td>
+                    <td>Stallman</td>
+                    <td>Computer Science</td>
+                </tr>
+                <tr>
+                    <td>Dennis</td>
+                    <td>Ritchie</td>
+                    <td>Computer Science</td>
+                </tr>
+                <tr>
+                    <td>Bjarne</td>
+                    <td>Stroustrup</td>
+                    <td>Computer Science</td>
+                </tr>
+                <tr>
+                    <td>Steve</td>
+                    <td>Jobs</td>
+                    <td>Computer Science</td>
+                </tr>
+                <tr>
+                    <td>Steve</td>
+                    <td>Wozniak</td>
+                    <td>Computer Science</td>
+                </tr>        <tr>
+                    <td>Mario</td>
+                    <td>Molina</td>
+                    <td>Chemistry</td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="paging-first-datatable"></div>
+    </div>
+    <div id="my-panel">
+        <p>Hello, world! This is a lateral panel.</p>
+    </div>
+    <div id="button-container"><button id="my-link" type="button" href="#my-panel">Click here to open panel</button></div>
+</body>
+</html>
