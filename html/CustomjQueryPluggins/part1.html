@@ -8,8 +8,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- Importing jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $.fn.davidFunction = function() { // Custom plugin by David
+                $(`#${this[0].id}`).css({
+                    backgroundColor: "red",
+                    fontSize: "25px",
+                    border: "1px black solid",
+                    width: "50%",
+                    margin: "0 auto 0 auto",
+                    textAlign: "center",
+                }).slideUp(3000).slideDown(2000);
+            };
+        
+        $(document).ready(
+            function() {
+                $("#clickme").on("click", () => {$("#clickme").davidFunction()})
+            }
+        );
+    </script>
 </head>
 <body>
-    
+    <div id="clickme"> This is a div to test the plugin coded by David Barrios</div>
 </body>
 </html>
