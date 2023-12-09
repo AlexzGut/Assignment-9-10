@@ -1,13 +1,181 @@
 <!-- Author: John Alexander Gutierrez Gaviria
  Student ID: c0895239 -->
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plug-ins Alexander Gutierrez</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Blinker:wght@300&family=Roboto&display=swap" rel="stylesheet">
+
+    <!-- Animate Scroll -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="../jQueryPluggins/2A-Plugin/animatescroll.js"></script>
+
+    <!-- Light Gallery -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/css/lg-autoplay.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/css/lg-comments.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/css/lg-fullscreen.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/css/lg-rotate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/css/lg-share.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/css/lg-thumbnail.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Blinker', sans-serif;
+        }
+
+        body {
+            background-color: whitesmoke;
+        }
+
+        main {
+            width: 1024px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #go-up {
+            position: fixed;
+            bottom: 1em;
+            right: 1em;
+            padding: .5em .75em;
+            background-color: black;
+            border-radius: 2em;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: whitesmoke;
+            border: none;
+        }
+
+        #go-up:hover {
+            background-color: whitesmoke;
+            color: black;
+            border: 2px solid black;
+        }
+
+        @media screen and (max-width: 1024px) {
+            main {
+                width: 512px;
+                margin: auto;
+            }
+        }
+
+        @media screen and (max-width: 512px) {
+            main {
+                width: 256px;
+                margin: auto;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    
+    <header>
+        <h1>Light Gallery</h1>
+        <hr>
+    </header>
+    <main>
+
+        <div id="gallery">
+            <a href="https://picsum.photos/id/1018/1000/1200" data-lg-size="1000-1200"
+                data-lg-thumbnail="https://picsum.photos/id/1018/250/300">
+                <img src="https://picsum.photos/id/1018/250/300">
+            </a>
+            <a href="https://picsum.photos/id/237/1000/1200" data-lg-size="1000-1200"
+                data-lg-thumbnail="https://picsum.photos/id/237/250/300">
+                <img src="https://picsum.photos/id/237/250/300">
+            </a>
+            <a href="https://picsum.photos/id/299/1000/1200" data-lg-size="1000-1200"
+                data-lg-thumbnail="https://picsum.photos/id/299/250/300"">
+            <img src=" https://picsum.photos/id/299/250/300"">
+            </a>
+            <a href="https://picsum.photos/seed/picsum/1000/1200" data-lg-size="1000-1200"
+                data-lg-thumbnail="https://picsum.photos/seed/picsum/250/300">
+                <img src="https://picsum.photos/seed/picsum/250/300">
+            </a>
+            <a href="https://picsum.photos/id/40/1000/1200" data-lg-size="1000-1200"
+                data-lg-thumbnail="https://picsum.photos/id/40/250/300">
+                <img src="https://picsum.photos/id/40/250/300">
+            </a>
+            <a href="https://picsum.photos/id/91/1000/1200" data-lg-size="1000-1200"
+                data-lg-thumbnail="https://picsum.photos/id/91/250/300">
+                <img src="https://picsum.photos/id/91/250/300">
+            </a>
+            <a href="https://picsum.photos/id/274/1000/1200" data-lg-size="1000-1200"
+                data-lg-thumbnail="https://picsum.photos/id/274/250/300">
+                <img src="https://picsum.photos/id/274/250/300">
+            </a>
+
+            <a href="https://picsum.photos/id/407/1000/1200" data-lg-size="1000-1200"
+                data-lg-thumbnail="https://picsum.photos/id/407/250/300">
+                <img src="https://picsum.photos/id/407/250/300">
+            </a>
+            <a href="https://picsum.photos/id/429/1000/1200" data-lg-size="1000-1200"
+                data-lg-thumbnail="https://picsum.photos/id/429/250/300">
+                <img src="https://picsum.photos/id/429/250/300">
+            </a>
+            <a href="https://picsum.photos/id/413/1000/1200" data-lg-size="1000-1200"
+                data-lg-thumbnail="https://picsum.photos/id/413/250/300">
+                <img src="https://picsum.photos/id/413/250/300">
+            </a>
+            <a href="https://picsum.photos/id/436/1000/1200" data-lg-size="1000-1200"
+                data-lg-thumbnail="https://picsum.photos/id/436/250/300">
+                <img src="https://picsum.photos/id/436/250/300">
+            </a>
+            <a href="https://picsum.photos/id/474/1000/1200" data-lg-size="1000-1200"
+                data-lg-thumbnail="https://picsum.photos/id/474/250/300">
+                <img src="https://picsum.photos/id/474/250/300">
+            </a>
+            <a href="https://picsum.photos/id/486/1000/1200" data-lg-size="1000-1200"
+                data-lg-thumbnail="https://picsum.photos/id/486/250/300">
+                <img src="https://picsum.photos/id/486/250/300">
+            </a>
+            <a href="https://picsum.photos/id/520/1000/1200" data-lg-size="1000-1200"
+                data-lg-thumbnail="https://picsum.photos/id/520/250/300">
+                <img src="https://picsum.photos/id/520/250/300">
+            </a>
+            <a href="https://picsum.photos/id/564/1000/1200" data-lg-size="1000-1200"
+                data-lg-thumbnail="https://picsum.photos/id/564/250/300">
+                <img src="https://picsum.photos/id/564/250/300">
+            </a>
+        </div>
+        <button id="go-up">Go Up</button>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/lightgallery.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/plugins/autoplay/lg-autoplay.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/plugins/fullscreen/lg-fullscreen.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/plugins/rotate/lg-rotate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/plugins/share/lg-share.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/plugins/zoom/lg-zoom.min.js"></script>
+    <script>
+        lightGallery(document.getElementById('gallery'), {
+            plugins: [lgThumbnail, lgZoom, lgFullscreen, lgShare, lgRotate, lgAutoplay],
+            download: true,
+            controls: true,
+            thumbWidth: 100,
+            thumbHeight: 100
+        });
+
+        $('#go-up').on('click', function () {
+            $('h1').animatescroll({ scrollSpeed: 2000, easing: 'easeOutBack' });
+        });     
+    </script>
 </body>
+
 </html>
