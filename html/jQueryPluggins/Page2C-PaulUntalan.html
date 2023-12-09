@@ -9,7 +9,10 @@
 	
 	<!-- FlowUpLabel CSS -->
 	<link href='http://fonts.googleapis.com/css?family=Cantarell:400,700' rel='stylesheet' type='text/css'>
-    <link href="./2B-Plugin/css/jquery.FlowupLabels.css" rel='stylesheet' type='text/css'>
+    <link href="./2C-Plugin/css/Flowuplabels/jquery.FlowupLabels.css" rel='stylesheet' type='text/css'>
+
+    <!-- jQuery Image Gallery CSS-->
+    <link rel="stylesheet" href="../jQueryPluggins/2C-Plugin/css/jQuery_Image_Gallery/blueimp-gallery.min.css">
 
 
     <style>
@@ -21,8 +24,23 @@
         line-height: 22px;
         }
 
+        .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        }
+
+        html, body {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+
         #formContainer {
-        position: fixed;
+        position: absolute;
         top: 7%;
         right: 7%;
         bottom: 7%;
@@ -93,12 +111,33 @@
         right: 0; 
         border: 0;
         }
+
+        .spacer {
+            margin-top: 125vh; 
+        }
+
+        #jQuery-image-library-section {            
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px;
+        }
+
+        #jQuery-image-library-section img {
+            width: 300px;
+            height: 200px;
+        }
     </style>
 
 </head>
 
+
 <body>
+    <!-- HTML Code for the FlowupLabels jquery plugin. -->
     
+    <section id="FlowupLabels-container">
 	<div id='formContainer'>
     	<div id='formHeader'>
 			<h3>File Request Form</h3>
@@ -134,12 +173,86 @@
 			</p>
 		</form>
 	</div>
+    </section>
 
-    <script src="./2B-Plugin/js/flowuplabels.jquery.min.js"></script>
-    <script src='./2B-Plugin/js/jquery.FlowupLabels.js'></script>
-	<script src='./2B-Plugin/js/main.js'></script>
+    <div class="spacer">
+        <p></p>
+    </div>
 
+    <!-- The Gallery as lightbox dialog, should be a document body child element -->
+    <div id="container">
+        <section id="jQuery-image-library-section">
+        <div id="links">
+            <a href="../jQueryPluggins/2C-Plugin/img/blueimp/banana.jpg" title="Banana">
+              <img src="../jQueryPluggins/2C-Plugin/img/blueimp/thumbnails/banana.jpg" alt="Banana" />
+            </a>
+            <a href="../jQueryPluggins/2C-Plugin/img/blueimp/apple.jpg" title="Apple">
+              <img src="../jQueryPluggins/2C-Plugin/img/blueimp/thumbnails//apple.jpg" alt="Apple" />
+            </a>
+            <a href="../jQueryPluggins/2C-Plugin/img/blueimp/orange.jpg" title="Orange">
+              <img src="../jQueryPluggins/2C-Plugin/img/blueimp/thumbnails/orange.jpg" alt="Orange" />
+            </a>
+        </div>
+
+        <div
+            id="blueimp-gallery"
+            class="blueimp-gallery blueimp-gallery-contain"
+            aria-label="image gallery"
+            aria-modal="true"
+            role="dialog"
+        >
+            <div class="slides" aria-live="polite"></div>
+            <h3 class="title"></h3>
+            <a
+                class="prev"
+                aria-controls="blueimp-gallery"
+                aria-label="previous slide"
+                aria-keyshortcuts="ArrowLeft"
+            ></a>
+            <a
+                class="next"
+                aria-controls="blueimp-gallery"
+                aria-label="next slide"
+                aria-keyshortcuts="ArrowRight"
+            ></a>
+            <a
+                class="close"
+                aria-controls="blueimp-gallery"
+                aria-label="close"
+                aria-keyshortcuts="Escape"
+            ></a>
+            <a
+                class="play-pause"
+                aria-controls="blueimp-gallery"
+                aria-label="play slideshow"
+                aria-keyshortcuts="Space"
+                aria-pressed="false"
+                role="button"
+            ></a>
+            <ol class="indicator"></ol>
+        </div>
+    </section>
+    </div>
     
-  
+    <!-- FlowupLabels scripts-->
+    <script src="./2C-Plugin/js/Flowuplabels/flowuplabels.jquery.min.js"></script>
+    <script src='./2C-Plugin/js/Flowuplabels/jquery.FlowupLabels.js'></script>
+	<script src='./2C-Plugin/js/Flowuplabels/main.js'></script>
+
+    <!-- jQuery Image Library scripts-->
+    <script src="jQueryPluggins/2C-Plugin/js/jQuery_Image_Gallery/blueimp-gallery.min.js"></script>
+    
+    <script>
+        document.getElementById('links').onclick = function (event) {
+          event = event || window.event
+          var target = event.target || event.srcElement
+          var link = target.src ? target.parentNode : target
+          var options = { index: link, event: event }
+          var links = this.getElementsByTagName('a')
+          blueimp.Gallery(links, options)
+        }
+    </script>
+
 </body>
+
 </html>
