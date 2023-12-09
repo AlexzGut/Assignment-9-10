@@ -4,53 +4,122 @@
 -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Blinker:wght@300&family=Roboto&display=swap" rel="stylesheet">
+
     <!-- Importing jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
-        $.fn.davidFunction = function() { // Custom plugin by David
-                $(`#${this[0].id}`).css({
-                    backgroundColor: "red",
-                    fontSize: "25px",
-                    border: "1px black solid",
-                    width: "50%",
-                    margin: "0 auto 0 auto",
-                    textAlign: "center",
-                }).slideUp(3000).slideDown(2000);
-            };
+        $.fn.davidFunction = function () { // Custom plugin by David
+            $(`#${this[0].id}`).css({
+                backgroundColor: "red",
+                fontSize: "25px",
+                border: "1px black solid",
+                width: "50%",
+                margin: "0 auto 0 auto",
+                textAlign: "center",
+            }).slideUp(3000).slideDown(2000);
+        };
 
-            $.fn.paulFunction = function() { // Custom plugin by Paul
-                this.css({
-                    backgroundColor: "green",
-                    color: "white",
-                    borderRadius: "25px",
-                    width: "30%",
-                    margin: "auto",
-                    textAlign: "center"
-                }).fadeOut(2000).fadeIn(2000);
-            };
+        $.fn.paulFunction = function () { // Custom plugin by Paul
+            this.css({
+                backgroundColor: "green",
+                color: "white",
+                borderRadius: "25px",
+                width: "30%",
+                margin: "auto",
+                textAlign: "center"
+            }).fadeOut(2000).fadeIn(2000);
+        };
 
-            $(document).ready(function() {
-                $("#clickme").on("click", function() {
-                    $(this).davidFunction();
-                });
+        /** Custome plugin by Alexander Gutierrez - c0895239
+         *  This plugin displays a loading animation
+         */
 
-                $('#text-to-animate').on("click", function() {
-                    $(this).paulFunction();
-                });
+        $.fn.loadAnimation = function () {
+            $('main').hide();
+            $(this).append('<div id="animation"></div><p id="percentage"></p>');
+            this.css({
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '200px'
             });
+
+            let count = 0;
+            let interval = setInterval(function () {
+                if (count == 99)
+                    clearInterval(interval);
+                count++;
+                $('#percentage').html(`${count} %`);
+            }, 50);
+
+            $('#animation').css({
+                backgroundColor: '#1877F2',
+                borderRadius: '2em',
+                width: '0px',
+                height: '10px',
+                transition: 'easi-out'
+            });
+
+            $('#percentage').css({ 
+                textAlign: 'center',
+                fontSize: '1.2em',
+                fontWeight: 'bold'
+            });
+
+            $('#animation').animate({ width: '200px' }, 5000, function () {
+                $(this).css({ display: 'none' });
+                $('#percentage').css({ display: 'none' });
+                $('main').show();
+            })
+        }
+
+        // wait for the DOM to load before running any code
+        $(document).ready(function () {
+            $("#clickme").on("click", function () {
+                $(this).davidFunction();
+            });
+
+            $('#text-to-animate').on("click", function () {
+                $(this).paulFunction();
+            });
+
+
+
+            $('#loading').loadAnimation();
+        });
     </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Blinker', sans-serif;
+        }
+    </style>
 </head>
+
 <body>
-    <div id="clickme"> This is a div to test the plugin coded by David Barrios</div>
-    <br><br>
-    <div id="text-to-animate">
-        <p>I am the text to test the paulFunction.<br> 
-            Try it by clicking any part of me.</p>
-    </div>
+    <main>
+        <div id="clickme"> This is a div to test the plugin coded by David Barrios</div>
+        <br><br>
+        <div id="text-to-animate">
+            <p>I am the text to test the paulFunction.<br>
+                Try it by clicking any part of me.</p>
+        </div>
+    </main>
+
+    <div id="loading"></div>
 
 </body>
+
 </html>
