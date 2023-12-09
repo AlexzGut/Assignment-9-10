@@ -1,6 +1,7 @@
 <!-- Authors: John Alexander Gutierrez Gaviria. Student ID: c0895239 
             : David Barrios Rodriguez.          Student ID: c0893262
             : Paul Jordan Untalan.              Student ID: c0899319
+            : Can Zorbey Tarhan.                Student ID: c0895400
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -82,7 +83,69 @@
                 $('#percentage').css({ display: 'none' });
                 $('main').show();
             })
-        }
+        };
+      
+       // Custome plugin by Can
+      $.fn.animateEffects = function() {
+            setInterval(function() {
+                // Star generation
+                let star = $("<div class='star'>⭐</div>");
+                let randomX = Math.random() * window.innerWidth;
+                let randomY = Math.random() * window.innerHeight;
+
+                star.css({
+                    position: "absolute",
+                    left: randomX + "px",
+                    top: randomY + "px",
+                    fontSize: "20px",
+                    zIndex: "9999",
+                });
+
+                $("body").append(star);
+
+                setTimeout(function() {
+                    star.remove();
+                }, 500);
+
+                // Firework explosion
+                let explosion = $("<div class='explosion'></div>");
+                randomX = Math.random() * window.innerWidth;
+                randomY = Math.random() * window.innerHeight;
+                let randomColor = '#' + (Math.random().toString(16) + '000000').slice(2, 8);
+
+                explosion.css({
+                    position: "absolute",
+                    left: randomX + "px",
+                    top: randomY + "px",
+                    width: "10px",
+                    height: "10px",
+                    backgroundColor: randomColor,
+                    borderRadius: "50%",
+                    transformOrigin: "center",
+                    zIndex: "9999",
+                });
+
+                $("body").append(explosion);
+
+                explosion.animate({
+                    width: "100px",
+                    height: "100px",
+                    opacity: 0,
+                }, {
+                    duration: 1000,
+                    easing: 'linear',
+                    step: function(now, fx) {
+                        explosion.css({
+                            left: randomX - now / 2 + "px",
+                            top: randomY - now / 2 + "px",
+                        });
+                    },
+                    complete: function() {
+                        explosion.remove();
+                    }
+                });
+            }, 1000);
+        };
 
         // wait for the DOM to load before running any code
         $(document).ready(function () {
@@ -93,8 +156,8 @@
             $('#text-to-animate').on("click", function () {
                 $(this).paulFunction();
             });
-
-
+          
+            $(document).animateEffects();
 
             $('#loading').loadAnimation();
         });
@@ -105,6 +168,14 @@
             box-sizing: border-box;
             font-family: 'Blinker', sans-serif;
         }
+      
+        .explosion {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            z-index: 9999;
+         }
     </style>
 </head>
 
@@ -121,5 +192,4 @@
     <div id="loading"></div>
 
 </body>
-
 </html>
