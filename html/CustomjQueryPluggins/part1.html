@@ -56,14 +56,6 @@
                 width: '200px'
             });
 
-            let count = 0;
-            let interval = setInterval(function () {
-                if (count == 99)
-                    clearInterval(interval);
-                count++;
-                $('#percentage').html(`${count} %`);
-            }, 50);
-
             $('#animation').css({
                 backgroundColor: '#1877F2',
                 borderRadius: '2em',
@@ -72,11 +64,19 @@
                 transition: 'easi-out'
             });
 
-            $('#percentage').css({ 
+            $('#percentage').css({
                 textAlign: 'center',
                 fontSize: '1.2em',
                 fontWeight: 'bold'
             });
+
+            let count = 0;
+            let interval = setInterval(function () {
+                if (count == 99)
+                    clearInterval(interval);
+                count++;
+                $('#percentage').html(`${count} %`);
+            }, 50);
 
             $('#animation').animate({ width: '200px' }, 5000, function () {
                 $(this).css({ display: 'none' });
@@ -84,10 +84,10 @@
                 $('main').show();
             })
         };
-      
-       // Custome plugin by Can
-      $.fn.animateEffects = function() {
-            setInterval(function() {
+
+        // Custome plugin by Can
+        $.fn.animateEffects = function () {
+            setInterval(function () {
                 // Star generation
                 let star = $("<div class='star'>⭐</div>");
                 let randomX = Math.random() * window.innerWidth;
@@ -103,7 +103,7 @@
 
                 $("body").append(star);
 
-                setTimeout(function() {
+                setTimeout(function () {
                     star.remove();
                 }, 500);
 
@@ -134,13 +134,13 @@
                 }, {
                     duration: 1000,
                     easing: 'linear',
-                    step: function(now, fx) {
+                    step: function (now, fx) {
                         explosion.css({
                             left: randomX - now / 2 + "px",
                             top: randomY - now / 2 + "px",
                         });
                     },
-                    complete: function() {
+                    complete: function () {
                         explosion.remove();
                     }
                 });
@@ -156,7 +156,7 @@
             $('#text-to-animate').on("click", function () {
                 $(this).paulFunction();
             });
-          
+
             $(document).animateEffects();
 
             $('#loading').loadAnimation();
@@ -168,14 +168,14 @@
             box-sizing: border-box;
             font-family: 'Blinker', sans-serif;
         }
-      
+
         .explosion {
             position: absolute;
             width: 10px;
             height: 10px;
             border-radius: 50%;
             z-index: 9999;
-         }
+        }
     </style>
 </head>
 
@@ -192,4 +192,5 @@
     <div id="loading"></div>
 
 </body>
+
 </html>
